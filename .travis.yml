@@ -1,4 +1,13 @@
 language: ruby
 rvm:
-  - 2.2.3
-before_install: gem install bundler -v 1.10.6
+  - ruby-head
+  - 2.2
+  - 2.1
+  - 2.0.0
+  - 1.9.3
+  - jruby-19mode
+gemfile:
+  - gemfiles/rails4.2.gemfile
+  - gemfiles/rails4.1.gemfile
+  - gemfiles/rails4.0.gemfile
+  - gemfiles/rails3.2.gemfile
