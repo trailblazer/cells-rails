@@ -1,18 +1,19 @@
-require 'rails/railtie'
+require "rails/railtie"
+require "cell/rails"
 
 module Cell
   class Railtie < Rails::Railtie
-    require 'cell/rails'
+
     config.cells = ActiveSupport::OrderedOptions.new
 
-    initializer('cells.attach_router') do |app|
+    initializer("cells.attach_router") do |app|
       ViewModel.class_eval do
         include app.routes.url_helpers # TODO: i hate this, make it better in Rails.
       end
     end
 
     # ruthlessly stolen from the zurb-foundation gem.
-    initializer 'cells.update_asset_paths' do |app|
+    initializer "cells.update_asset_paths" do |app|
       Array(app.config.cells.with_assets).each do |cell_class|
         # puts "@@@@@ #{cell_class.camelize.constantize.prefixes}"
         app.config.assets.paths += cell_class.camelize.constantize.prefixes # Song::Cell.prefixes
@@ -60,9 +61,9 @@ module Cell
       ViewModel.send(:include, Cell::Hamlit) if Cell.const_defined?(:Hamlit, false)
       ViewModel.send(:include, Cell::Slim) if Cell.const_defined?(:Slim, false)
     end
-    #   ViewModel.template_engine = app.config.app_generators.rails.fetch(:template_engine, 'erb').to_s
+    #   ViewModel.template_engine = app.config.app_generators.rails.fetch(:template_engine, "erb").to_s
 
-    initializer('cells.development') do |app|
+    initializer("cells.development") do |app|
       if Rails.env == "development"
         require "cell/development"
         ViewModel.send(:include, Development)
@@ -70,7 +71,7 @@ module Cell
     end
 
     rake_tasks do
-      load 'tasks/cells.rake'
+      load "tasks/cells.rake"
     end
   end
 end
