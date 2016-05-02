@@ -3,12 +3,12 @@ PATH
   specs:
     cells (4.1.0)
       tilt (>= 1.4, < 3)
-      uber (~> 0.0.9)
+      uber (>= 0.0.9)
 
 PATH
   remote: ../../../cells-rails
   specs:
-    cells-rails (0.0.1)
+    cells-rails (0.0.2)
       actionpack (>= 3.0)
       cells (>= 4.0)
 

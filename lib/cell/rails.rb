@@ -1,9 +1,9 @@
-# These methods are automatically added to all controllers and views.
 module Cell
   def self.rails_version
     Gem::Version.new(ActionPack::VERSION::STRING)
   end
 
+  # These methods are automatically added to all controllers and views.
   module RailsExtensions
     module ActionController
       def cell(name, model=nil, options={}, constant=::Cell::ViewModel, &block)

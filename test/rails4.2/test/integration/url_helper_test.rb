@@ -36,12 +36,3 @@ class UrlTest < ActionDispatch::IntegrationTest
 
 
 end
-
-class AssetsHelperTest < ActionController::TestCase
-  tests SongsController
-
-  it do
-    get :with_image_tag
-    response.body.must_equal "<img src=\"/images/logo.png\" alt=\"Logo\" />"
-  end
-end

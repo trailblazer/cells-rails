@@ -15,11 +15,18 @@ class SongsController < ApplicationController
     render text: cell(:song).video_path(1)
   end
 
-  def with_image_tag
-    render text: cell(:song).image_tag("logo.png")
+  def with
+    method = params[:song][:method]
+    args   = params[:song][:args]
+
+    render text: cell("songs_controller/asset").send(method, args)
   end
 
   def with_escaped
     render layout: false
+  end
+
+  require "cell/helper/asset_helper"
+  class AssetCell < Cell::ViewModel
   end
 end

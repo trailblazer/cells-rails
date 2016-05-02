@@ -6,7 +6,7 @@
 
 * html_safe
 * controller in context
-* TODO: asset helpers
+* TODO: asset helpers Cell::Helper::AssetHelper
 
 
 ## Installation

@@ -46,11 +46,12 @@ module Cell
         include ActionView::Helpers::FormHelper # includes ActionView::Helpers::UrlHelper, ActionView::Helpers::FormTagHelper
         include ::Cell::RailsExtensions::HelpersAreShit
 
-        include ActionView::Helpers::AssetTagHelper
-      end
+        require "cell/helper/asset_helper"
+        include Cell::Helper::AssetHelper
 
-      # set VM#cache_store, etc.
-      ViewModel.send(:include, RailsExtensions::ViewModel)
+        # set VM#cache_store, etc.
+        include RailsExtensions::ViewModel
+      end
     end
 
     # TODO: allow to turn off this.
