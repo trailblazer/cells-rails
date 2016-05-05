@@ -6,5 +6,6 @@ require "cell/rails"
 require "cell/railtie"
 
 module Cell
+  autoload :Translation, "cell/translation"
   autoload :TestCase, "cell/test_case"
 end
