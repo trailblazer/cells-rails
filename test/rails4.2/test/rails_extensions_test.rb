@@ -32,6 +32,11 @@ class ViewExtensionsTest < ActionController::TestCase
     assert_equal "<b>A Tale That Wasn't Right</b>", @response.body
   end
 
+  test "cell(collection: ..) without #call" do
+    get :view_with_collection_without_call
+    assert_equal "<b>A Tale That Wasn't Right</b>", @response.body
+  end
+
   test "cell(..) with #call" do
     get :view_with_cell_with_call
     assert_equal "<b>A Tale That Wasn't Right</b>", @response.body
