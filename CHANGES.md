@@ -1,3 +1,7 @@
+## 0.0.6
+
+* `Testing` fixed with Rails 5.
+
 ## 0.0.5
 
 * Fix an annoying bundler loading bug. Thanks to @RKushnir.
