@@ -16,6 +16,10 @@ module Cell
       def concept(name, model=nil, options={}, &block)
         cell(name, model, options, ::Cell::Concept, &block)
       end
+
+      def view(cell, *args)
+        render html: cell(*args)
+      end
     end
 
     module ActionView
