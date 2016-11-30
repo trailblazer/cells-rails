@@ -7,6 +7,7 @@ Gem::Specification.new do |spec|
   spec.version       = Cells::Rails::VERSION
   spec.authors       = ["Nick Sutterer"]
   spec.email         = ["apotonick@gmail.com"]
+  spec.license       = "MIT"
 
   spec.summary       = %q{Convenient Rails support for Cells.}
   spec.homepage      = "http://trailblazer.to"
