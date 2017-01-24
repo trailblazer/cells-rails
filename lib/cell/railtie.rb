@@ -54,13 +54,14 @@ module Cell
       end
     end
 
-    # TODO: allow to turn off this.
-    initializer "cells.include_template_module", after: "cells.include_default_helpers" do
-      # yepp, this is happening. saves me a lot of coding in each extension.
-      ViewModel.send(:include, Cell::Erb) if Cell.const_defined?(:Erb, false)
-      ViewModel.send(:include, Cell::Haml) if Cell.const_defined?(:Haml, false)
-      ViewModel.send(:include, Cell::Hamlit) if Cell.const_defined?(:Hamlit, false)
-      ViewModel.send(:include, Cell::Slim) if Cell.const_defined?(:Slim, false)
+    initializer "cells.include_template_module", after: "cells.include_default_helpers" do |app|
+      if app.config.cells.include_template_engine != false
+        # yepp, this is happening. saves me a lot of coding in each extension.
+        ViewModel.send(:include, Cell::Erb) if Cell.const_defined?(:Erb, false)
+        ViewModel.send(:include, Cell::Haml) if Cell.const_defined?(:Haml, false)
+        ViewModel.send(:include, Cell::Hamlit) if Cell.const_defined?(:Hamlit, false)
+        ViewModel.send(:include, Cell::Slim) if Cell.const_defined?(:Slim, false)
+      end
     end
     #   ViewModel.template_engine = app.config.app_generators.rails.fetch(:template_engine, "erb").to_s
 
