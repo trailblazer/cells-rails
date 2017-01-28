@@ -1,6 +1,8 @@
 ## 0.0.7
 
-* Add `config.cells.include_template_engine = false` to turn off automatic inclusion of, e.g., `Cell::Slim`.
+* Add `config.cells.include_template_engine = false` to turn off automatic
+inclusion of, e.g., `Cell::Slim`.
+* Require Cells >= 4.1.6.
 
 ## 0.0.6
 
