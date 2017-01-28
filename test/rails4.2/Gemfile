@@ -10,10 +10,11 @@ gem "sprockets", "~> 2.12.3"
 group :development, :test do
   gem "minitest-spec-rails"
   gem "capybara_minitest_spec"
+  gem "minitest-line"
 end
 
-# gem "cells", ">= 4.1.0"
-gem "cells", path: "../../../cells"# ">= 4.1.0"
+gem "cells", ">= 4.1.6"
+# gem "cells", path: "../../../cells"# ">= 4.1.0"
 gem "cells-rails", path: "../../../cells-rails"# ">= 4.1.0"
 gem "cells-erb"
 gem "simple_form"

@@ -1,3 +1,7 @@
+## 0.0.7
+
+* Add `config.cells.include_template_engine = false` to turn off automatic inclusion of, e.g., `Cell::Slim`.
+
 ## 0.0.6
 
 * `Testing` fixed with Rails 5.
