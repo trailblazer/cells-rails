@@ -20,6 +20,7 @@ module Cell
         compute_asset_extname
         compute_asset_host
         compute_asset_path
+        favicon_link_tag
         font_path
         font_url
         image_path
