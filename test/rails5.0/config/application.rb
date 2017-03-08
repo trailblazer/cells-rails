@@ -28,6 +28,7 @@ module EngineCells
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.eager_load = false
 
     # enable asset pipeline as in development/test.
     config.assets.enabled = true
@@ -36,3 +37,5 @@ module EngineCells
     config.cells.with_assets = ["user/cell", "song_cell"]
   end
 end
+
+Rails.application.config.root = Rails.root.join('test', 'rails5.0')
