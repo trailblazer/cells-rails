@@ -14,6 +14,9 @@ module Cell
 
     # ruthlessly stolen from the zurb-foundation gem.
     initializer "cells.update_asset_paths" do |app|
+      # Add Rails.root to view_paths
+      Cell::ViewModel.view_paths = [Rails.root.join("app", "cells")]
+
       Array(app.config.cells.with_assets).each do |cell_class|
         # puts "@@@@@ #{cell_class.camelize.constantize.prefixes}"
         app.config.assets.paths += cell_class.camelize.constantize.prefixes # Song::Cell.prefixes
