@@ -54,7 +54,7 @@ module Cell
       end
     end
 
-    IncludeTemplateModules = -> (app) do
+    IncludeTemplateModules = ->(app) do
       return if app.config.cells.include_template_engine == false
 
       # yepp, this is happening. saves me a lot of coding in each extension.
