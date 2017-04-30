@@ -16,7 +16,7 @@ module Rails
       def create_views
         states.each do |state|
           @state = state
-          @path = File.join('app/concepts', class_path, file_name, 'views', "#{state}.#{template_engine}")
+          @path = File.join('app/concepts', class_path, file_name, 'view', "#{state}.#{template_engine}")
           template "view.#{template_engine}", @path
         end
       end

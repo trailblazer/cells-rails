@@ -12,7 +12,7 @@ class ConceptGeneratorTest < Rails::Generators::TestCase
 
     assert_file 'app/concepts/song/cell.rb', /class Song::Cell < Cell::Concept/
     assert_file 'app/concepts/song/cell.rb', /def show/
-    assert_file 'app/concepts/song/views/show.erb', %r{app/concepts/song/views/show\.erb}
+    assert_file 'app/concepts/song/view/show.erb', %r{app/concepts/song/view/show\.erb}
   end
 
   test "test unit test" do
@@ -27,7 +27,7 @@ class ConceptGeneratorTest < Rails::Generators::TestCase
 
     assert_file 'app/concepts/song/cell.rb', /class Song::Cell < Cell::Concept/
     assert_file 'app/concepts/song/cell.rb', /def show/
-    assert_file 'app/concepts/song/views/show.haml', %r{app/concepts/song/views/show\.haml}
+    assert_file 'app/concepts/song/view/show.haml', %r{app/concepts/song/view/show\.haml}
   end
 
   test '[slim] standard assets, show view' do
@@ -35,6 +35,6 @@ class ConceptGeneratorTest < Rails::Generators::TestCase
 
     assert_file 'app/concepts/song/cell.rb', /class Song::Cell < Cell::Concept/
     assert_file 'app/concepts/song/cell.rb', /def show/
-    assert_file 'app/concepts/song/views/show.slim', %r{app/concepts/song/views/show\.slim}
+    assert_file 'app/concepts/song/view/show.slim', %r{app/concepts/song/view/show\.slim}
   end
 end
