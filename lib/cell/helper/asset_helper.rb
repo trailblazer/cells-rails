@@ -15,6 +15,7 @@ module Cell
         asset_path
         asset_url
         image_tag
+        video_tag
         audio_path
         audio_url
         compute_asset_extname
