@@ -54,6 +54,10 @@ module Cell
         super.html_safe
       end
 
+      def html_safe?
+        true
+      end
+
       def parent_controller
         context[:controller]
       end
