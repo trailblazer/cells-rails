@@ -27,6 +27,12 @@ module Cell
         end
       end
 
+      ActiveSupport.on_load(:action_mailer) do
+        self.class_eval do
+          include ::Cell::RailsExtensions::ActionMailer
+        end
+      end
+
       ActiveSupport.on_load(:action_view) do
         self.class_eval do
           include ::Cell::RailsExtensions::ActionView

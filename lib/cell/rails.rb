@@ -18,6 +18,15 @@ module Cell
       end
     end
 
+    module ActionMailer
+      def cell(name, model=nil, options={}, constant=::Cell::ViewModel, &block)
+        options[:context] ||= {}
+        options[:context][:controller] = self
+
+        constant.cell(name, model, options, &block)
+      end
+    end
+
     module ActionView
       # Returns the cell instance for +name+. You may pass arbitrary options to your
       # cell.
