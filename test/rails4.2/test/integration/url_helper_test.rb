@@ -3,17 +3,24 @@ require 'test_helper'
 class MusiciansController < ApplicationController
 end
 
+class WithDefaultOptionsController < ApplicationController
+  private
+  def default_url_options(options={})
+    options.merge(anchor: 'foobar')
+  end
+end
+
+class UrlCell < Cell::ViewModel
+  def show
+    url_for(model)
+  end
+end
+
 class UrlHelperTest < MiniTest::Spec
   include Cell::Testing
   controller MusiciansController
 
-  class Cell < Cell::ViewModel
-    def show
-      url_for(model)
-    end
-  end
-
-  let (:song_cell) { Cell.new(Song.new, context: { controller: controller }) }
+  let (:song_cell) { UrlCell.new(Song.new, context: { controller: controller }) }
 
   # path helpers work in cell instance.
   it { song_cell.songs_path.must_equal "/songs" }
@@ -33,6 +40,13 @@ class UrlTest < ActionDispatch::IntegrationTest
   #   visit "/songs/1/edit"
   #   page.text.must_equal "http://www.example.com/songs/1"
   # end
+end
 
+class DefaultOptionsTest < MiniTest::Spec
+  include Cell::Testing
+  controller WithDefaultOptionsController
 
+  let (:song_cell) { UrlCell.new(Song.new, context: { controller: controller }) }
+
+  it { song_cell.songs_path.must_equal "/songs#foobar" }
 end
