@@ -1,3 +1,7 @@
+## 0.0.8
+
+* Fix testing for `rspec-cells` in combination with Rails 5.1. Thanks @tiagoamaro.
+
 ## 0.0.7
 
 * Add `config.cells.include_template_engine = false` to turn off automatic
