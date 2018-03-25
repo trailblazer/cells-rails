@@ -8,5 +8,5 @@ class PublicTest < MiniTest::Spec
   it { Cell::ViewModel.cell("song", collection: [Object]).().class.must_equal ActiveSupport::SafeBuffer }
 
   # #call returns html_safe.
-  it { SongCell.new(nil).().must_be_instance_of ActiveSupport::SafeBuffer }
+  it { ::SongCell.new(nil).().must_be_instance_of ActiveSupport::SafeBuffer }
 end
