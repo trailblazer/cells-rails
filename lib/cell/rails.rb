@@ -47,7 +47,7 @@ module Cell
         extend Uber::Delegates
         delegates :parent_controller, :session, :params, :request, :config, :env, :url_options, :default_url_options
         # forgery protection.
-        delegates :parent_controller, :protect_against_forgery?, :form_authenticity_token, :request_forgery_protection_token
+        delegates :parent_controller, :request_forgery_protection_token
       end
 
       def call(*)
@@ -65,6 +65,20 @@ module Cell
 
       def cache_store  # we want to use DI to set a cache store in cell/rails.
         ::ActionController::Base.cache_store
+      end
+
+      # In Ruby 2.4.0+, Forwardable prints a warning when you delegate
+      # to a private or protected method - so `delegates :protect_against_forgery?`
+      # or `delegates :form_authenticity_token` will print warnings all
+      # over the place
+      #
+      # This workaround prevents warnings being printed
+      def protect_against_forgery?
+        controller.send(:protect_against_forgery?)
+      end
+
+      def form_authenticity_token(*args)
+        controller.send(:form_authenticity_token, *args)
       end
 
       module ClassMethods
