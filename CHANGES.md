@@ -1,3 +1,7 @@
+## 0.0.9
+
+* Prevent Forwardable from printing warnings in Ruby 2.4+
+
 ## 0.0.8
 
 * Fix testing for `rspec-cells` in combination with Rails 5.1. Thanks @tiagoamaro.
