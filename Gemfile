@@ -8,7 +8,7 @@ gemspec
 # gem 'sass-rails', "~> 4.0.3"#, "  ~> 3.1.0"
 # gem "sprockets", "~> 2.12.3"
 
-rails_version = ENV['RAILS_VERSION'] || '~> 5.2.0'
+rails_version = ENV['RAILS_VERSION'] || '5.0'
 gem "railties", "~> #{rails_version}"
 gem "activerecord", "~> #{rails_version}"
 
