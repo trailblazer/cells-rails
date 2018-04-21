@@ -6,6 +6,5 @@
 /doc/
 /pkg/
 /spec/reports/
-/tmp/
 /log
-/test/tmp
+tmp
