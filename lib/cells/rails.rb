@@ -1,4 +1,3 @@
-require "cells/rails/version"
 require "cells"
 
 require "cell/caching/notification"

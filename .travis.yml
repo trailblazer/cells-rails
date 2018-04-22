@@ -1,3 +1,4 @@
+sudo: false
 language: ruby
 rvm:
   - 2.5.1
@@ -11,7 +12,6 @@ env:
 matrix:
   fast_finish: true
   exclude:
-    - rvm: 2.1.10
-      env: "RAILS_VERSION=5.0"
-    - rvm: 2.4.0
+    - rvm: 2.4.4
       env: "RAILS_VERSION=4.2"
+

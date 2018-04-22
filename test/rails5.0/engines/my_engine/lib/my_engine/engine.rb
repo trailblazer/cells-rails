@@ -1,5 +1,4 @@
 require "cells"
-puts "eingiiiiiiine loaded"
 module MyEngine
   class Engine < ::Rails::Engine
     isolate_namespace MyEngine
