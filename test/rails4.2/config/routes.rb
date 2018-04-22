@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :musicians do
+  resources :musicians, controller: 'musician' do
     collection do
       get :view_with_concept_with_show
       get :view_with_concept_without_call

@@ -2,9 +2,8 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'minitest/autorun'
 
-require 'cells'
+require 'cells-rails'
 require "cells-erb"
-require "sass-rails"
 
 TEST_RAILS_VERSION = ENV['RAILS_VERSION'] || '5.0'
 ENV['RAILS_ENV'] = 'test'

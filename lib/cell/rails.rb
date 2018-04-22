@@ -1,3 +1,4 @@
+require 'active_support/concern'
 module Cell
   def self.rails_version
     Gem::Version.new(ActionPack::VERSION::STRING)

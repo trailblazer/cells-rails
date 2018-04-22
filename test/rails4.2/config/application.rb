@@ -33,6 +33,7 @@ module EngineCells
     # enable asset pipeline as in development/test.
     config.assets.enabled = true
     config.assets.compile = true
+    config.assets.digest = false
 
     config.cells.with_assets = ["user/cell", "song_cell"]
   end

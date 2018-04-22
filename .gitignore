@@ -8,3 +8,4 @@
 /spec/reports/
 /log
 tmp
+.DS_Store

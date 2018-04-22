@@ -4,22 +4,22 @@ class SongsController < ApplicationController
   end
 
   def index
-    render text: cell(:song).()
+    render plain: cell(:song).()
   end
 
   def new
-    render text: cell(:song).url_for(Song.new)
+    render plain: cell(:song).url_for(Song.new)
   end
 
   def edit
-    render text: cell(:song).video_path(1)
+    render plain: cell(:song).video_path(1)
   end
 
   def with
     method = params[:song][:method]
     args   = params[:song][:args]
 
-    render text: cell("songs_controller/asset").send(method, args)
+    render plain: cell("songs_controller/asset").send(method, args)
   end
 
   def with_escaped
