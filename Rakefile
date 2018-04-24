@@ -1,7 +1,7 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
 
-RAILS_VERSION = ENV['RAILS_VERSION'] || '5.0'
+RAILS_VERSION = ENV.fetch('RAILS_VERSION','5.0')
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"

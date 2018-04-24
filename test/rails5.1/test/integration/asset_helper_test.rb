@@ -2,13 +2,13 @@ class AssetHelperTest < ActionController::TestCase
   tests SongsController
 
   it do
-    get :with, params: { song: { method: :image_tag, args: "logo.png" } }
-    response.body.must_equal "<img src=\"http://assets.com/images/logo.png\" alt=\"Logo\" />"
+    get :with, params: { song: { method: :image_tag, args: "logo.jpg" } }
+    response.body.must_equal "<img src=\"http://assets.com/assets/logo.jpg\" />"
   end
 
   it do
-    get :with, params: { song: { method: :asset_path, args: "logo.png" } }
-    response.body.must_equal "http://assets.com/logo.png"
+    get :with, params: { song: { method: :asset_path, args: "logo.jpg" } }
+    response.body.must_equal "http://assets.com/assets/logo.jpg"
   end
 
   it do

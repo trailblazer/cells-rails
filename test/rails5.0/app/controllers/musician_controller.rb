@@ -20,10 +20,10 @@ class MusicianController < ActionController::Base
   end
 
   def action_with_concept_with_call
-    render text: concept("view_extensions_test/cell", "A Tale That Wasn't Right").call
+    render plain: concept("view_extensions_test/cell", "A Tale That Wasn't Right").call
   end
 
   def action_with_cell_with_call
-    render text: cell("view_extensions_test/song", "A Tale That Wasn't Right").call
+    render plain: cell("view_extensions_test/song", "A Tale That Wasn't Right").call
   end
 end
