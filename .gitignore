@@ -1,4 +1,4 @@
-/.bundle/
+.bundle/
 /.yardoc
 /Gemfile.lock
 /_yardoc/
@@ -9,3 +9,4 @@
 /log
 tmp
 .DS_Store
+log/
