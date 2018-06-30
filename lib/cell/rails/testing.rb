@@ -18,12 +18,12 @@ module Cell
           else # 5.0
             ::ActionController::TestRequest.create
           end
-        else #< 5
+        else # < 5
           ::ActionController::TestRequest.new
         end
       end
-    end # Testing
+    end
   end
 end
 
-Cell::Testing.send(:include, Cell::RailsExtensions::Testing)
+Cell::Testing.include Cell::RailsExtensions::Testing

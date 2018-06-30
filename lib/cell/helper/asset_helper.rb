@@ -1,3 +1,4 @@
+require "active_support/core_ext/module/delegation"
 module Cell
   module Helper
     # Delegate all asset-related helpers to the global helpers instance.
@@ -6,12 +7,10 @@ module Cell
     module AssetHelper
       # Extend if we forgot anything.
       # This delegates asset helpers to the global Rails helper instance.
-
       # http://api.rubyonrails.org/classes/ActionView/Helpers/AssetUrlHelper.html
-      %w{
+      %w[
         javascript_include_tag
         stylesheet_link_tag
-
         asset_path
         asset_url
         image_tag
@@ -46,11 +45,11 @@ module Cell
         url_to_video
         video_path
         video_url
-      }.each do |method|
+      ].each do |method|
         define_method(method) do |*args|
-          ::ActionController::Base.helpers.send(method, *args)
+          ::ActionController::Base.helpers.public_send(method, *args)
         end
       end
-    end # AssetHelper
+    end
   end
 end

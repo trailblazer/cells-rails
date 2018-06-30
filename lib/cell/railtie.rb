@@ -3,7 +3,6 @@ require "cell/rails"
 
 module Cell
   class Railtie < Rails::Railtie
-
     config.cells = ActiveSupport::OrderedOptions.new
 
     initializer("cells.attach_router") do |app|
@@ -12,8 +11,7 @@ module Cell
       end
     end
 
-    # ruthlessly stolen from the zurb-foundation gem.
-    initializer "cells.update_asset_paths" do |app|
+    initializer "cells.update_asset_paths", after: "action_controller.assets_config" do |app|
       # Add Rails.root to view_paths
       Cell::ViewModel.view_paths = [Rails.root.join("app", "cells")]
 
@@ -23,15 +21,15 @@ module Cell
       end
     end
 
-    initializer "cells.rails_extensions" do |app|
+    initializer "cells.rails_extensions" do |_app|
       ActiveSupport.on_load(:action_controller) do
-        self.class_eval do
+        class_eval do
           include ::Cell::RailsExtensions::ActionController
         end
       end
 
       ActiveSupport.on_load(:action_view) do
-        self.class_eval do
+        class_eval do
           include ::Cell::RailsExtensions::ActionView
         end
       end
@@ -39,8 +37,8 @@ module Cell
       require "cell/rails/collection"
       require "cell/rails/constant_for"
 
-      Cell::Collection.send :include, Cell::RailsExtension::Collection
-      Cell::ViewModel.send :include, Cell::RailsExtension::ConstantFor
+      Cell::Collection.include Cell::RailsExtension::Collection
+      Cell::ViewModel.include Cell::RailsExtension::ConstantFor
     end
 
     initializer "cells.include_default_helpers" do
@@ -57,22 +55,22 @@ module Cell
       end
     end
 
-    IncludeTemplateModules = ->(app) do
+    IncludeTemplateModules = lambda do |app|
       return if app.config.cells.include_template_engine == false
 
       # yepp, this is happening. saves me a lot of coding in each extension.
-      ViewModel.send(:include, Cell::Erb)    if Cell.const_defined?(:Erb, false)
-      ViewModel.send(:include, Cell::Haml)   if Cell.const_defined?(:Haml, false)
-      ViewModel.send(:include, Cell::Hamlit) if Cell.const_defined?(:Hamlit, false)
-      ViewModel.send(:include, Cell::Slim)   if Cell.const_defined?(:Slim, false)
+      ViewModel.include Cell::Erb    if Cell.const_defined?(:Erb, false)
+      ViewModel.include Cell::Haml   if Cell.const_defined?(:Haml, false)
+      ViewModel.include Cell::Hamlit if Cell.const_defined?(:Hamlit, false)
+      ViewModel.include Cell::Slim   if Cell.const_defined?(:Slim, false)
     end
 
-    initializer( "cells.include_template_module", after: "cells.include_default_helpers", &IncludeTemplateModules)
+    initializer("cells.include_template_module", after: "cells.include_default_helpers", &IncludeTemplateModules)
 
-    initializer("cells.development") do |app|
+    initializer("cells.development") do |_app|
       if Rails.env == "development"
         require "cell/development"
-        ViewModel.send(:include, Development)
+        ViewModel.include Development
       end
     end
 

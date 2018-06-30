@@ -1,12 +1,40 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+ENV["RAILS_ENV"] = "test"
+require File.expand_path("../test/dummy/config/environment.rb", __dir__)
 
-require 'minitest/autorun'
+require "minitest/autorun"
 
-require 'cells-rails'
-require "cells-erb"
-
-TEST_RAILS_VERSION = ENV['RAILS_VERSION'] || '5.0'
-ENV['RAILS_ENV'] = 'test'
-require_relative "rails#{TEST_RAILS_VERSION}/config/environment"
+require "cells-rails"
 
 require "rails/test_help" # adds stuff like @routes, etc.
+
+class MusicianController < ActionController::Base
+  def view_with_concept_with_show
+    render inline: %{<%= concept("view_extensions_test/cell", "Up For Breakfast", volume: 1).show %>} # TODO: concept doesn't need .call
+  end
+
+  def view_with_concept_without_call
+    render inline: %{<%= concept("view_extensions_test/cell", "A Tale That Wasn't Right") %>} # this tests ViewModel#to_s.
+  end
+
+  def view_with_concept_with_call
+    render inline: %{<%= concept("view_extensions_test/cell", "A Tale That Wasn't Right").call %>}
+  end
+
+  def view_with_cell_with_call
+    render inline: %{<%= cell("view_extensions_test/song", "A Tale That Wasn't Right").call %>}
+  end
+
+  def view_with_collection_without_call
+    render inline: %{<%= cell("view_extensions_test/song", collection: ["A Tale That Wasn't Right"]) %>}
+  end
+
+  def action_with_concept_with_call
+    render plain: concept("view_extensions_test/cell", "A Tale That Wasn't Right").call
+  end
+
+  def action_with_cell_with_call
+    render plain: cell("view_extensions_test/song", "A Tale That Wasn't Right").call
+  end
+end
+
+Rails.backtrace_cleaner.remove_silencers! # YES, stacktraces are awesome!

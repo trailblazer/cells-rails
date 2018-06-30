@@ -9,4 +9,4 @@ module Cell
   end
 end
 
-Cell::Testing.capybara = true if Object.const_defined?(:"Capybara")
+Cell::Testing.capybara = true if Object.const_defined?(:Capybara)

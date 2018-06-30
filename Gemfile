@@ -1,18 +1,19 @@
-source 'https://rubygems.org'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
+source "https://rubygems.org"
 
 # Specify your gem's dependencies in cells-rails.gemspec
 gemspec
 
-# gem "my_engine", path: "engines/my_engine"
-
-# gem 'sass-rails', "~> 4.0.3"#, "  ~> 3.1.0"
-# gem "sprockets", "~> 2.12.3"
-
-rails_version = ENV.fetch('RAILS_VERSION','5.0')
+rails_version = ENV.fetch('RAILS_VERSION','5.2')
 gem "railties", "~> #{rails_version}"
 gem "activerecord", "~> #{rails_version}"
-
-gem "my_engine", path: "test/rails#{rails_version}/engines/my_engine"
+gem "sqlite3"
+gem "sprockets-rails"
+gem "my_engine", path: "test/dummy/engines/my_engine"
 
 group :development, :test do
   gem "minitest-spec-rails"
@@ -21,3 +22,19 @@ end
 
 gem "simple_form"
 gem "formtastic"
+
+case ENV["GEMS_SOURCE"]
+when "local"
+  gem "cells", path: "../cells"
+  gem "cells-erb", path: "../cells-erb"
+  gem "cells-slim", path: "../cells-slim", require: false
+  gem "cells-hamlit", path: "../cells-hamlit", require: false
+  gem "cells-haml", path: "../cells-haml", require: false
+when "github"
+  gem "cells", github: "trailblazer/cells"
+  gem "cells-erb", github: "trailblazer/cells-erb"
+  gem "cells-slim", github: "trailblazer/cells-slim", require: false
+  gem "cells-hamlit", github: "trailblazer/cells-hamlit", require: false
+  gem "cells-haml", github: "trailblazer/cells-haml", require: false
+end
+

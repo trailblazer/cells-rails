@@ -1,20 +1,20 @@
-require 'active_support/concern'
+require "active_support/concern"
 module Cell
   def self.rails_version
-    Gem::Version.new(ActionPack::VERSION::STRING)
+    Rails.gem_version
   end
 
   # These methods are automatically added to all controllers and views.
   module RailsExtensions
     module ActionController
-      def cell(name, model=nil, options={}, constant=::Cell::ViewModel, &block)
+      def cell(name, model = nil, options = {}, constant = ::Cell::ViewModel, &block)
         options[:context] ||= {}
         options[:context][:controller] = self
 
         constant.cell(name, model, options, &block)
       end
 
-      def concept(name, model=nil, options={}, &block)
+      def concept(name, model = nil, options = {}, &block)
         cell(name, model, options, ::Cell::Concept, &block)
       end
     end
@@ -41,6 +41,7 @@ module Cell
     # Gets included into Cell::ViewModel in a Rails environment.
     module ViewModel
       extend ActiveSupport::Concern
+      cattr_accessor :output_buffer
 
       # DISCUSS: who actually uses forgery protection with cells? it is not working since 4, anyway?
       # include ActionController::RequestForgeryProtection
@@ -58,13 +59,14 @@ module Cell
       def parent_controller
         context[:controller]
       end
-      alias_method :controller, :parent_controller
+      alias controller parent_controller
 
       def perform_caching?
         ::ActionController::Base.perform_caching
       end
 
-      def cache_store  # we want to use DI to set a cache store in cell/rails.
+      # we want to use DI to set a cache store in cell/rails.
+      def cache_store
         ::ActionController::Base.cache_store
       end
 
@@ -75,11 +77,11 @@ module Cell
       #
       # This workaround prevents warnings being printed
       def protect_against_forgery?
-        controller.send(:protect_against_forgery?)
+        controller.__send__(:protect_against_forgery?)
       end
 
       def form_authenticity_token(*args)
-        controller.send(:form_authenticity_token, *args)
+        controller.__send__(:form_authenticity_token, *args)
       end
 
       module ClassMethods
@@ -106,7 +108,7 @@ module Cell
     # Anyway, this is the reason we need this patch module. If you have trouble with URLs in Cells, then please ask Rails to
     # fix their implementation. Thank you.
     module HelpersAreShit
-      def url_for(options = nil) # from ActionDispatch:R:UrlFor.
+      def url_for(options = nil)
         case options
           when nil
             _routes.url_for(url_options.symbolize_keys)
