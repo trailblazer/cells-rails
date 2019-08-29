@@ -2,6 +2,10 @@ module Cell
   module RailsExtensions
     # This modules overrides Cell::Testing#controller_for and provides Rails-specific logic.
     module Testing
+      RAILS_7_0 = Gem::Version.new("7.0.0")
+      RAILS_5_1 = Gem::Version.new("5.1.0")
+      RAILS_5_0 = Gem::Version.new("5.0.0")
+
       def controller_for(controller_class)
         return unless controller_class
 
@@ -12,13 +16,13 @@ module Cell
       end
 
       def action_controller_test_request(controller_class)
-        if ::Rails::VERSION::MAJOR >= 5
-          if ::Rails::VERSION::MINOR >= 1 # ~> 5.1
-            ::ActionController::TestRequest.create(controller_class)
-          else # 5.0
-            ::ActionController::TestRequest.create
-          end
-        else #< 5
+        version = ::Rails.gem_version
+
+        if version >= RAILS_5_1 && version < RAILS_7_0
+          ::ActionController::TestRequest.create(controller_class)
+        elsif version >= RAILS_5_0 && version < RAILS_5_1
+          ::ActionController::TestRequest.create
+        else
           ::ActionController::TestRequest.new
         end
       end

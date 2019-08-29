@@ -39,4 +39,4 @@ module EngineCells
   end
 end
 
-Rails.application.config.root = Rails.root.join('test', 'rails5.2')
+Rails.application.config.root = Rails.root.join('test', 'rails6.0')

@@ -11,7 +11,13 @@ env:
   - "RAILS_VERSION=5.0"
   - "RAILS_VERSION=5.1"
   - "RAILS_VERSION=5.2"
+  - "RAILS_VERSION=6.0"
 matrix:
   fast_finish: true
+  exclude:
+    - rvm: 2.3.8
+      env: RAILS_VERSION=6.0
+    - rvm: 2.4.6
+      env: RAILS_VERSION=6.0
 
 cache: bundler
