@@ -5,7 +5,7 @@ gemspec
 
 # gem "my_engine", path: "engines/my_engine"
 
-# gem 'sass-rails', "~> 4.0.3"#, "  ~> 3.1.0"
+gem 'sass-rails', "~> 6.0.0"
 # gem "sprockets", "~> 2.12.3"
 
 rails_version = ENV.fetch('RAILS_VERSION','5.0')
