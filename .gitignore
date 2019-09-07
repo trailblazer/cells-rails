@@ -10,3 +10,5 @@
 tmp
 .DS_Store
 log/
+*.iml
+.idea

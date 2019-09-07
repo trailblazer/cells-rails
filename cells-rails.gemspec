@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "cells", ">= 4.1.6", "< 5.0.0"
-  spec.add_dependency "actionpack", ">= 3.0"
+  spec.add_dependency "actionpack", ">= 5.0"
 
 
   spec.add_development_dependency "bundler"

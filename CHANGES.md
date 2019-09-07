@@ -1,3 +1,7 @@
+## 0.1.0
+
+* Support for Rails 6.0 Thank to @Szeliga
+
 ## 0.0.9
 
 * Prevent Forwardable from printing warnings in Ruby 2.4+
