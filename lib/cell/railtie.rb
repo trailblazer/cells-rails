@@ -76,6 +76,13 @@ module Cell
       end
     end
 
+    initializer "trailblazer.cells.update_view_paths" do |app|
+      if Object.const_defined?(:Trailblazer) && Trailblazer.const_defined?(:Cell)
+        # Add Rails.root to view_paths
+        Trailblazer::Cell.view_paths = [Rails.root.join("app", "concepts")]
+      end
+    end
+
     rake_tasks do
       load "tasks/cells.rake"
     end
