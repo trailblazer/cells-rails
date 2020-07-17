@@ -1,3 +1,7 @@
+## 0.1.2
+
+* Fix `LocalJumpError` from our Railtie.
+
 ## 0.1.1
 
 * The `Cell.view_paths` are now set automatically for `Trailblazer::Cell`s, too, if the gem is present. This allows starting Rails in daemon mode `rails s -d` and cells finding its views.
