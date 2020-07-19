@@ -1,12 +1,13 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
+require 'rails'
 
-RAILS_VERSION = ENV.fetch('RAILS_VERSION','5.0')
+test_folder = Rails.version[0..2]
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
   t.libs << "lib"
-  t.test_files = FileList["test/rails#{RAILS_VERSION}/**/*_test.rb"]
+  t.test_files = FileList["test/rails#{test_folder}/**/*_test.rb"]
 end
 
 task :default => :test

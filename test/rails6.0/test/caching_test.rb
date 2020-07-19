@@ -29,41 +29,41 @@ class CachingUnitTest < MiniTest::Spec
 
   describe "::state_cache_key" do
     # accepts state name, only.
-    it { director.state_cache_key(:count).must_equal "cells/director/count/" }
+    it { _(director.state_cache_key(:count)).must_equal "cells/director/count/" }
 
     # accepts hash as key parts
     if Cell.rails_version >= Gem::Version.new('4.0')
-      it { director.state_cache_key(:count, b: 2, a: 1).must_equal "cells/director/count/b/2/a/1" }
+      it { _(director.state_cache_key(:count, b: 2, a: 1)).must_equal "cells/director/count/b/2/a/1" }
     else
-      it { director.state_cache_key(:count, b: 2, a: 1).must_equal "cells/director/count/a=1&b=2" }
+      it { _(director.state_cache_key(:count, b: 2, a: 1)).must_equal "cells/director/count/a=1&b=2" }
     end
 
     # accepts array as key parts
-    it { director.state_cache_key(:count, [1, 2, 3]).must_equal "cells/director/count/1/2/3" }
+    it { _(director.state_cache_key(:count, [1, 2, 3])).must_equal "cells/director/count/1/2/3" }
 
     # accepts string as key parts
-    it { director.state_cache_key(:count, "1/2").must_equal "cells/director/count/1/2" }
+    it { _(director.state_cache_key(:count, "1/2")).must_equal "cells/director/count/1/2" }
 
     # accepts nil as key parts
-    it { director.state_cache_key(:count, nil).must_equal "cells/director/count/" }
+    it { _(director.state_cache_key(:count, nil)).must_equal "cells/director/count/" }
   end
 
 
   describe "#state_cached?" do
     # true for cached
-    it { cellule.send(:state_cached?, :tock).must_equal true }
+    it { _(cellule.send(:state_cached?, :tock)).must_equal true }
 
     # false otherwise
-    it { cellule.send(:state_cached?, :sing).must_equal false }
+    it { _(cellule.send(:state_cached?, :sing)).must_equal false }
   end
 
 
   describe "#cache?" do
     # true for cached
-    it { cellule.cache?(:tock).must_equal true }
+    it { _(cellule.cache?(:tock)).must_equal true }
 
     # false otherwise
-    it { cellule.cache?(:sing).must_equal false }
+    it { _(cellule.cache?(:sing)).must_equal false }
 
     describe "perform_caching turned off" do
       after do
@@ -73,14 +73,14 @@ class CachingUnitTest < MiniTest::Spec
       # always false
       it do
         ::ActionController::Base.perform_caching = false
-        cellule.cache?(:sing).must_equal false
-        cellule.cache?(:sing).must_equal false
+        _(cellule.cache?(:sing)).must_equal false
+        _(cellule.cache?(:sing)).must_equal false
       end
     end
 
     describe "#cache_store" do
       # rails cache store per default.
-      it { cellule.cache_store.must_equal ActionController::Base.cache_store }
+      it { _(cellule.cache_store).must_equal ActionController::Base.cache_store }
     end
   end
 
@@ -149,22 +149,22 @@ class CachingTest < MiniTest::Spec
     director_cell.class.cache :show
     ActionController::Base.perform_caching = false
 
-    director_cell(1).call.must_equal "1"
-    director_cell(2).call.must_equal "2"
+    _(director_cell(1).call).must_equal "1"
+    _(director_cell(2).call).must_equal "2"
   end
 
   # cache forever when no options.
   it do
     director_cell.class.cache :show
-    director_cell(1).call.must_equal "1"
-    director_cell(2).call.must_equal "1"
+    _(director_cell(1).call).must_equal "1"
+    _(director_cell(2).call).must_equal "1"
   end
 
    # caches with string state name.
   it do
     director_cell.class.cache :show
-    director_cell(1).("show").must_equal "1"
-    director_cell(2).("show").must_equal "1"
+    _(director_cell(1).("show")).must_equal "1"
+    _(director_cell(2).("show")).must_equal "1"
   end
 
 
@@ -176,8 +176,8 @@ class CachingTest < MiniTest::Spec
       end
     end
 
-    director_cell(1).call(:dictate).must_equal "1"
-    director_cell(2).call(:dictate).must_equal "2"
+    _(director_cell(1).call(:dictate)).must_equal "1"
+    _(director_cell(2).call(:dictate)).must_equal "2"
   end
 
   # compute key with cell properties from #initialize.
@@ -186,10 +186,10 @@ class CachingTest < MiniTest::Spec
       @counter < 3 ? {count: "<"} : {count: ">"}
     end
 
-    director_cell(1).call.must_equal "1"
-    director_cell(2).call.must_equal "1"
-    director_cell(3).call.must_equal "3"
-    director_cell(4).call.must_equal "3"
+    _(director_cell(1).call).must_equal "1"
+    _(director_cell(2).call).must_equal "1"
+    _(director_cell(3).call).must_equal "3"
+    _(director_cell(4).call).must_equal "3"
   end
 
   # compute key with instance method
@@ -201,10 +201,10 @@ class CachingTest < MiniTest::Spec
       end
     end
 
-    director_cell(1).call.must_equal "1"
-    director_cell(2).call.must_equal "1"
-    director_cell(3).call.must_equal "3"
-    director_cell(4).call.must_equal "3"
+    _(director_cell(1).call).must_equal "1"
+    _(director_cell(2).call).must_equal "1"
+    _(director_cell(3).call).must_equal "3"
+    _(director_cell(4).call).must_equal "3"
   end
 
   # allow returning strings for key
@@ -213,20 +213,20 @@ class CachingTest < MiniTest::Spec
       @counter < 3 ? "<" : ">"
     end
 
-    director_cell(1).call.must_equal "1"
-    director_cell(2).call.must_equal "1"
-    director_cell(3).call.must_equal "3"
-    director_cell(4).call.must_equal "3"
+    _(director_cell(1).call).must_equal "1"
+    _(director_cell(2).call).must_equal "1"
+    _(director_cell(3).call).must_equal "3"
+    _(director_cell(4).call).must_equal "3"
   end
 
   # allows conditional ifs.
   it do
     director_cell.class.cache :show, if: lambda { @counter < 3 }
 
-    director_cell(1).call.must_equal "1"
-    director_cell(2).call.must_equal "1"
-    director_cell(3).call.must_equal "3"
-    director_cell(4).call.must_equal "4"
+    _(director_cell(1).call).must_equal "1"
+    _(director_cell(2).call).must_equal "1"
+    _(director_cell(3).call).must_equal "3"
+    _(director_cell(4).call).must_equal "4"
   end
 
   # allows conditional ifs with instance method.
@@ -239,10 +239,10 @@ class CachingTest < MiniTest::Spec
       end
     end
 
-    director_cell(1).call.must_equal "1"
-    director_cell(2).call.must_equal "1"
-    director_cell(3).call.must_equal "3"
-    director_cell(4).call.must_equal "4"
+    _(director_cell(1).call).must_equal "1"
+    _(director_cell(2).call).must_equal "1"
+    _(director_cell(3).call).must_equal "3"
+    _(director_cell(4).call).must_equal "4"
   end
 
 
@@ -281,7 +281,7 @@ class CachingTest < MiniTest::Spec
 
     cellule.class.cache :show, expires_in: 1.minutes, tags: lambda { self.class.to_s }
     cellule.call
-    cellule.cache_store.fetch_args.must_equal ["cells/caching_test/director/show/", {expires_in: 60, tags: "CachingTest::DirectorCell"}]
+    _(cellule.cache_store.fetch_args).must_equal ["cells/caching_test/director/show/", {expires_in: 60, tags: "CachingTest::DirectorCell"}]
   end
 end
 

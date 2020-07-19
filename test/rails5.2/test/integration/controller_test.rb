@@ -5,12 +5,12 @@ class ControllerTest < ActionController::TestCase
 
   it do
     get :index
-    response.body.must_equal "happy"
+    _(response.body).must_equal "happy"
   end
 
   # HTML escaping.
   it do
     get :with_escaped
-    response.body.must_equal "<h1>Yeah!</h1><b>&lt;script&gt;</b>" # only the property is escaped.
+    _(response.body).must_equal "<h1>Yeah!</h1><b>&lt;script&gt;</b>" # only the property is escaped.
   end
 end

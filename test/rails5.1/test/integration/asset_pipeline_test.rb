@@ -12,6 +12,6 @@ class AssetPipelineTest < ActionDispatch::IntegrationTest
     visit "/assets/application.css"
 
     # both engine User::Cell and SongCell provide assets.
-    page.text.gsub(/\s+/, "").must_include "user{background:green}.song{background:red}"
+    _(page.text.gsub(/\s+/, "")).must_include "user{background:green}.song{background:red}"
   end
 end
