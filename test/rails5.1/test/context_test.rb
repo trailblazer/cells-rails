@@ -15,15 +15,15 @@ class ContextTest < MiniTest::Spec
     cell = ParentCell.(model, admin: true, context: { user: user, controller: controller })
     # cell.extend(ParentController)
 
-    cell.model.must_equal model
-    cell.controller.must_equal controller
-    cell.user.must_equal user
+    _(cell.model).must_equal model
+    _(cell.controller).must_equal controller
+    _(cell.user).must_equal user
 
     # nested cell
     child = cell.cell("context_test/parent", "")
 
-    child.model.must_equal ""
-    child.controller.must_equal controller
-    child.user.must_equal user
+    _(child.model).must_equal ""
+    _(child.controller).must_equal controller
+    _(child.user).must_equal user
   end
 end

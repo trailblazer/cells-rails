@@ -77,7 +77,7 @@ module Cell
     end
 
     initializer "trailblazer.cells.update_view_paths" do |app|
-      if Object.const_defined?(:Trailblazer) && Trailblazer.const_defined?(:Cell)
+      if Object.const_defined?(:Trailblazer) && Trailblazer.const_defined?(:Cell, false)
         # Add Rails.root to view_paths
         Trailblazer::Cell.view_paths = [Rails.root.join("app", "concepts")]
       end

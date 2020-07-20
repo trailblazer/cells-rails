@@ -22,10 +22,10 @@ class TranslationTest < MiniTest::Spec
                                   escape: false)
 
   # Translate text specified by an absolute path
-  it { I18nCell.new.greet_absolute.must_equal "Translated!" }
+  it { _(I18nCell.new.greet_absolute).must_equal "Translated!" }
 
   # Translate text specified by an relative path
-  it { I18nCell.new.greet_relative.must_equal "Translated!" }
+  it { _(I18nCell.new.greet_relative).must_equal "Translated!" }
 
 
   describe "::translation_path" do
@@ -40,6 +40,6 @@ class TranslationTest < MiniTest::Spec
       end
     end
 
-    it { ExplicitI18NCell.new.().must_equal "Hello you!" }
+    it { _(ExplicitI18NCell.new.()).must_equal "Hello you!" }
   end
 end

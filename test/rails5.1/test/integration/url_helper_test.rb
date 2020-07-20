@@ -23,8 +23,8 @@ class UrlHelperTest < MiniTest::Spec
   let (:song_cell) { UrlCell.new(Song.new, context: { controller: controller }) }
 
   # path helpers work in cell instance.
-  it { song_cell.songs_path.must_equal "/songs" }
-  it { song_cell.().must_equal "http://test.host/songs/1" }
+  it { _(song_cell.songs_path).must_equal "/songs" }
+  it { _(song_cell.()).must_equal "http://test.host/songs/1" }
 end
 
 
@@ -33,7 +33,7 @@ class UrlTest < ActionDispatch::IntegrationTest
 
   it do
     visit "/songs/new" # cell.url_for(Song.new)
-    page.text.must_equal "http://www.example.com/songs/1"
+    _(page.text).must_equal "http://www.example.com/songs/1"
   end
 
   # it do
@@ -48,5 +48,5 @@ class DefaultOptionsTest < MiniTest::Spec
 
   let (:song_cell) { UrlCell.new(Song.new, context: { controller: controller }) }
 
-  it { song_cell.songs_path.must_equal "/songs#foobar" }
+  it { _(song_cell.songs_path).must_equal "/songs#foobar" }
 end
