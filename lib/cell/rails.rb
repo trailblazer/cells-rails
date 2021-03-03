@@ -78,8 +78,8 @@ module Cell
         controller.send(:protect_against_forgery?)
       end
 
-      def form_authenticity_token(*args)
-        controller.send(:form_authenticity_token, *args)
+      def form_authenticity_token(**options)
+        controller.send(:form_authenticity_token, **options)
       end
 
       module ClassMethods
