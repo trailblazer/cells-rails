@@ -1,3 +1,7 @@
+## 0.1.4
+
+* Support Ruby 3.0.
+
 ## 0.1.3
 
 * Fix previous fixes.
