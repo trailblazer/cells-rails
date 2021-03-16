@@ -29,7 +29,7 @@ class TranslationTest < MiniTest::Spec
 
 
   describe "::translation_path" do
-      class ExplicitI18NCell < Cell::ViewModel
+    class ExplicitI18NCell < Cell::ViewModel
       include ActionView::Helpers::TranslationHelper
       include Cell::Translation
 
