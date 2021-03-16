@@ -3,6 +3,7 @@ module Cell
     # This modules overrides Cell::Testing#controller_for and provides Rails-specific logic.
     module Testing
       RAILS_7_0 = Gem::Version.new("7.0.0")
+      RAILS_6_1 = Gem::Version.new("6.1.0")
       RAILS_5_1 = Gem::Version.new("5.1.0")
       RAILS_5_0 = Gem::Version.new("5.0.0")
 

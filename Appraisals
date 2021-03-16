@@ -1,3 +1,9 @@
+appraise "6.1" do
+  gem "railties", "~> 6.1"
+  gem "activerecord", "~> 6.1"
+  gem "my_engine", path: "test/rails6.0/engines/my_engine"
+end
+
 appraise "6.0" do
   gem "railties", "~> 6.0"
   gem "activerecord", "~> 6.0"

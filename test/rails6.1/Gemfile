@@ -1,0 +1,20 @@
+source 'https://rubygems.org'
+
+gem 'rails', '~> 6.1.0'
+
+gem "my_engine", path: "engines/my_engine"
+
+gem 'sass-rails'
+gem "sprockets"
+
+group :development, :test do
+  gem "minitest-spec-rails"
+  gem "capybara_minitest_spec"
+end
+
+gem "cells", ">= 4.1.6"
+# gem "cells", path: "../../../cells"# ">= 4.1.0"
+gem "cells-rails", path: "../../../cells-rails"# ">= 4.1.0"
+gem "cells-erb"
+gem "simple_form"
+gem "formtastic"
