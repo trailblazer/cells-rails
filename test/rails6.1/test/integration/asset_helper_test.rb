@@ -13,7 +13,7 @@ class AssetHelperTest < ActionController::TestCase
 
   it do
     get :with, params: { song: { method: :javascript_include_tag, args: "application" } }
-    _(response.body).must_equal "<script src=\"http://assets.com/javascripts/application.js\"></script>"
+    _(response.body).must_equal "<script src=\"http://assets.com/assets/application.js\"></script>"
   end
 
   it do
