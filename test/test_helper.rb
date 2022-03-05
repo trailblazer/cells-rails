@@ -1,5 +1,4 @@
 ENV['RAILS_ENV'] = 'test'
-require 'pry-byebug'
 
 require 'minitest/autorun'
 
