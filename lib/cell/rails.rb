@@ -1,3 +1,4 @@
+require 'active_support'
 require 'active_support/concern'
 module Cell
   def self.rails_version

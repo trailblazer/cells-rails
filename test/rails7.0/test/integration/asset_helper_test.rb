@@ -18,7 +18,7 @@ class AssetHelperTest < ActionController::TestCase
 
   it do
     get :with, params: { song: { method: :stylesheet_link_tag, args: "application" } }
-    _(response.body).must_equal "<link rel=\"stylesheet\" media=\"screen\" href=\"http://assets.com/assets/application.css\" />"
+    _(response.body).must_equal "<link rel=\"stylesheet\" href=\"http://assets.com/assets/application.css\" media=\"screen\" />"
   end
 
   it do

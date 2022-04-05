@@ -2,12 +2,12 @@
 
 source "https://rubygems.org"
 
-gem "sass-rails", "~> 6.0.0"
+gem "sass-rails", "~> 6.0"
 gem "simple_form"
 gem "formtastic"
-gem "railties", "~> 6.0.0"
-gem "activerecord", "~> 6.0.0"
-gem "my_engine", path: "../test/rails6.0/engines/my_engine"
+gem "railties", "~> 7.0.0"
+gem "activerecord", "~> 7.0.0"
+gem "my_engine", path: "../test/rails7.0/engines/my_engine"
 
 group :development, :test do
   gem "minitest-spec-rails"
