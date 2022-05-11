@@ -1,3 +1,8 @@
+## 0.1.5
+
+* Support for Rails 7.
+* Migrate CI to Github Actions
+
 ## 0.1.4
 
 * Support Ruby 3.0.
