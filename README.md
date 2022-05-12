@@ -1,4 +1,5 @@
 # Cells::Rails
+![CI](https://github.com/trailblazer/cells-rails/actions/workflows/ci.yml/badge.svg)
 
 [Cells](https://github.com/apotonick/cells) is a generic view model implementation for Ruby. Cells-rails brings Rails-specific bindings.
 
