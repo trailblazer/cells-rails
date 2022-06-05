@@ -2,9 +2,9 @@
 
 source "https://rubygems.org"
 
+gem "my_engine", path: "../test/dummy/engines/my_engine"
 gem "simple_form"
 gem "formtastic"
-gem "my_engine", path: "../test/dummy/engines/my_engine"
 gem "railties", "~> 6.0"
 
 group :development, :test do

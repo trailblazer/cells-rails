@@ -12,3 +12,4 @@ tmp
 log/
 *.iml
 .idea
+gemfiles/*.lock
