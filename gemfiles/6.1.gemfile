@@ -5,7 +5,7 @@ source "https://rubygems.org"
 gem "my_engine", path: "../test/dummy/engines/my_engine"
 gem "simple_form"
 gem "formtastic"
-gem "railties", "~> 5.2.0"
+gem "railties", "~> 6.1.0"
 
 group :development, :test do
   gem "minitest-spec-rails"

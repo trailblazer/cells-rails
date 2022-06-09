@@ -3,9 +3,7 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in cells-rails.gemspec
 gemspec
 
-# gem "my_engine", path: "engines/my_engine"
-
-gem 'sass-rails', "~> 6.0.0"
+gem "my_engine", path: "test/dummy/engines/my_engine"
 
 group :development, :test do
   gem "minitest-spec-rails"
