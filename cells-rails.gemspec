@@ -14,6 +14,12 @@ Gem::Specification.new do |spec|
   spec.summary = 'Convenient Rails support for Cells.'
   spec.homepage = 'https://trailblazer.to'
 
+  spec.metadata['homepage_uri'] = spec.homepage
+  spec.metadata['source_code_uri'] = 'https://github.com/trailblazer/cells-rails'
+  spec.metadata['bug_tracker_uri'] = "#{spec.metadata['source_code_uri']}/issues"
+  spec.metadata['changelog_uri'] = "#{spec.metadata['source_code_uri']}/blob/HEAD/CHANGES.md"
+  spec.metadata['documentation_uri'] = 'https://trailblazer.to/2.1/docs/cells#cells-rails'
+
   spec.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|\.github)/}) }
   spec.require_paths = ['lib']
 
