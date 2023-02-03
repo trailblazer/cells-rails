@@ -28,6 +28,10 @@ class MusicianController < ActionController::Base
     render inline: %{<%= cell("view_extensions_test/song", "A Tale That Wasn't Right").call %>}
   end
 
+  def view_with_cell_with_call_keyword_args
+    render inline: %{<%= cell("view_extensions_test/song", "A Tale That Wasn't Right").call(:with_title, with_title: 'test') %>}
+  end
+
   def view_with_collection_without_call
     render inline: %{<%= cell("view_extensions_test/song", collection: ["A Tale That Wasn't Right"]) %>}
   end

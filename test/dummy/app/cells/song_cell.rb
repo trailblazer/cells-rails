@@ -9,6 +9,10 @@ class SongCell < Cell::ViewModel
   def with_escaped
     render
   end
+
+  def with_title(with_title: '')
+    "<h1>#{with_title}</h1>"
+  end
   # include ActionView::Helpers::AssetUrlHelper
   # include Sprockets::Rails::Helper
 

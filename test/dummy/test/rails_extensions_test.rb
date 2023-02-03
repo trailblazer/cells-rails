@@ -7,11 +7,19 @@ class ViewExtensionsTest < ActionController::TestCase
     def show
       "<b>#{model}</b>"
     end
+
+    def with_title(with_title: '')
+      "<h1>#{with_title}</h1><b>#{model}</b>"
+    end
   end
 
   class SongCell < ::Cell::ViewModel
     def show
       "<b>#{model}</b>"
+    end
+
+    def with_title(with_title: '')
+      "<h1>#{with_title}</h1><b>#{model}</b>"
     end
   end
 
@@ -40,6 +48,11 @@ class ViewExtensionsTest < ActionController::TestCase
   test "cell(..) with #call" do
     get :view_with_cell_with_call
     assert_equal "<b>A Tale That Wasn't Right</b>", @response.body
+  end
+
+  test "cell(..) with #call keyword args" do
+    get :view_with_cell_with_call_keyword_args
+    assert_equal "<h1>test</h1><b>A Tale That Wasn't Right</b>", @response.body
   end
 
   # Controller#concept
