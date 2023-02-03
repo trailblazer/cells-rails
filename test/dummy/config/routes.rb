@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :view_with_concept_without_call
       get :view_with_concept_with_call
       get :view_with_cell_with_call
+      get :view_with_cell_with_call_keyword_args
       get :view_with_collection_without_call
       get :action_with_concept_with_call
       get :action_with_cell_with_call
