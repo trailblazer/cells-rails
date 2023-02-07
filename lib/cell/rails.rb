@@ -52,7 +52,7 @@ module Cell
         delegates :parent_controller, :request_forgery_protection_token
       end
 
-      def call(*)
+      def call(*args, **kws)
         super.html_safe
       end
 
