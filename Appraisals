@@ -1,3 +1,7 @@
+appraise "8.0" do
+  gem "railties", "~> 8.0.0"
+end
+
 appraise "7.0" do
   gem "railties", "~> 7.0.0"
 end
@@ -13,4 +17,3 @@ end
 appraise "5.2" do
   gem "railties", "~> 5.2.0"
 end
-

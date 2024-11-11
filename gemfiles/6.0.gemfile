@@ -9,7 +9,7 @@ gem "railties", "~> 6.0"
 
 group :development, :test do
   gem "minitest-spec-rails"
-  gem "capybara_minitest_spec"
+  gem "capybara"
 end
 
 gemspec path: "../"

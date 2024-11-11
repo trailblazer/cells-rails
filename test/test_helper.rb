@@ -5,6 +5,7 @@ require 'minitest/autorun'
 require 'cells-rails'
 require "cells-erb"
 require 'rails'
+require 'debug'
 
 require_relative "dummy/config/environment"
 

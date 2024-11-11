@@ -17,7 +17,7 @@ class DirectorCell < Cell::ViewModel
 end
 
 
-class CachingUnitTest < MiniTest::Spec
+class CachingUnitTest < Minitest::Spec
   before :each do
     ActionController::Base.cache_store.clear
     ActionController::Base.perform_caching = true
@@ -115,7 +115,7 @@ class CachingUnitTest < MiniTest::Spec
 end
 
 
-class CachingTest < MiniTest::Spec
+class CachingTest < Minitest::Spec
   class DirectorCell < Cell::ViewModel
     def initialize(counter=0)
       super
