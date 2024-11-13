@@ -7,7 +7,7 @@ gem "my_engine", path: "test/dummy/engines/my_engine"
 
 group :development, :test do
   gem "minitest-spec-rails"
-  gem "capybara_minitest_spec"
+  gem "capybara"
 end
 
 gem "simple_form"

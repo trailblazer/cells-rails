@@ -1,6 +1,6 @@
 require "test_helper"
 
-class FormTagTestTest < MiniTest::Spec
+class FormTagTestTest < Minitest::Spec
   include Cell::Testing
   controller SongsController
 

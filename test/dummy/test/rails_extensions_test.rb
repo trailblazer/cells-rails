@@ -18,8 +18,8 @@ class ViewExtensionsTest < ActionController::TestCase
       "<b>#{model}</b>"
     end
 
-    def with_title(with_title: '')
-      "<h1>#{with_title}</h1><b>#{model}</b>"
+    def with_title(options)
+      "<h1>#{options[:with_title]}</h1><b>#{model}</b>"
     end
   end
 

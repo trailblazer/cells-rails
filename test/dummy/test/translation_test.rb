@@ -1,7 +1,7 @@
 require "test_helper"
 require "cell/translation"
 
-class TranslationTest < MiniTest::Spec
+class TranslationTest < Minitest::Spec
   class I18nCell < Cell::ViewModel
     include ActionView::Helpers::TranslationHelper
     include Cell::Translation

@@ -16,7 +16,7 @@ class UrlCell < Cell::ViewModel
   end
 end
 
-class UrlHelperTest < MiniTest::Spec
+class UrlHelperTest < Minitest::Spec
   include Cell::Testing
   controller MusiciansController
 
@@ -42,7 +42,7 @@ class UrlTest < ActionDispatch::IntegrationTest
   # end
 end
 
-class DefaultOptionsTest < MiniTest::Spec
+class DefaultOptionsTest < Minitest::Spec
   include Cell::Testing
   controller WithDefaultOptionsController
 

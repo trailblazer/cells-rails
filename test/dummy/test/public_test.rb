@@ -1,6 +1,6 @@
 require "test_helper"
 
-class PublicTest < MiniTest::Spec
+class PublicTest < Minitest::Spec
   # ::rails_version
   it { _(Cell.rails_version).must_equal Gem::Version.new(ActionPack::VERSION::STRING) }
 

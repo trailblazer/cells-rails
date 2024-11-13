@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SimpleFormTest < MiniTest::Spec
+class SimpleFormTest < Minitest::Spec
   include Cell::Testing
   controller SongsController # provides #url_options.
 
