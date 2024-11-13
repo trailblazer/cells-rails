@@ -18,8 +18,8 @@ class ViewExtensionsTest < ActionController::TestCase
       "<b>#{model}</b>"
     end
 
-    def with_title(with_title: '')
-      "<h1>#{with_title}</h1><b>#{model}</b>"
+    def with_title(options)
+      "<h1>#{options[:with_title]}</h1><b>#{model}</b>"
     end
   end
 
@@ -51,7 +51,6 @@ class ViewExtensionsTest < ActionController::TestCase
   end
 
   test "cell(..) with #call keyword args" do
-    skip("cells 4.1.7 does not support this")
     get :view_with_cell_with_call_keyword_args
     assert_equal "<h1>test</h1><b>A Tale That Wasn't Right</b>", @response.body
   end

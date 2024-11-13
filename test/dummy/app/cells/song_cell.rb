@@ -10,8 +10,8 @@ class SongCell < Cell::ViewModel
     render
   end
 
-  def with_title(with_title: '')
-    "<h1>#{with_title}</h1>"
+  def with_title(options)
+    "<h1>#{options[:with_title]}</h1>"
   end
   # include ActionView::Helpers::AssetUrlHelper
   # include Sprockets::Rails::Helper
