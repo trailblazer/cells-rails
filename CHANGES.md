@@ -1,3 +1,8 @@
+## 0.1.6
+
+* Rails 8 is supported.
+* Ruby 3.4.0 is supported.
+
 ## 0.1.5
 
 * Support for Rails 7.
