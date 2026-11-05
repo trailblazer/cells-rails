@@ -16,6 +16,12 @@ class UrlCell < Cell::ViewModel
   end
 end
 
+class LinkCell < Cell::ViewModel
+  def show
+    link_to("Songs", songs_path)
+  end
+end
+
 class UrlHelperTest < Minitest::Spec
   include Cell::Testing
   controller MusiciansController
@@ -25,6 +31,8 @@ class UrlHelperTest < Minitest::Spec
   # path helpers work in cell instance.
   it { _(song_cell.songs_path).must_equal "/songs" }
   it { _(song_cell.()).must_equal "http://test.host/songs/1" }
+
+  it { _(LinkCell.new(nil, context: { controller: controller }).()).must_equal %{<a href="/songs">Songs</a>} }
 end
 
 
