@@ -47,6 +47,7 @@ module Cell
       # include asset helpers (image_path, font_path, ect)
       ViewModel.class_eval do
         include ActionView::Helpers::FormHelper # includes ActionView::Helpers::UrlHelper, ActionView::Helpers::FormTagHelper
+        include ActionView::Helpers::NavigationHelper if defined?(ActionView::Helpers::NavigationHelper) # link_to, button_to, current_page? (Rails 8.2+)
         include ::Cell::RailsExtensions::HelpersAreShit
 
         require "cell/helper/asset_helper"
